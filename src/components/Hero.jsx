@@ -12,7 +12,6 @@ const Hero = () => (
     </p>
     <div className="hero-buttons">
       <button className="btn orange"><i data-lucide="sparkles"></i>Start Dosha Assessment</button>
-      <button className="btn grey"><i data-lucide="heart"></i>Share Your Symptoms</button>
       <button className="btn white"><i data-lucide="book-open"></i>Learn About Ayurveda</button>
     </div>
     <div className="stats">
