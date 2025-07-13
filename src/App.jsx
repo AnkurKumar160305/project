@@ -39,22 +39,10 @@ function App() {
   return (
     <Router>
       <Header onSignInClick={onSignInClick} onSignUpClick={onSignUpClick} />
-      {/* Main content rendered by Routes */}
-      {/* Add a border to the Routes component */}
-      <div style={{ border: '2px solid red' }}>
-        <Routes>
-          <Route path="/" element={<LandingPage onStartAssessmentClick={onSignInClick} />} /> {/* Pass modal trigger to LandingPage */}
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/learn" element={<Learn />} />
-          <Route path="/quiz" element={<Quiz />} /> {/* Add Quiz Route */}
-          <Route path="/result" element={<Result />} /> {/* Add Result Route */}
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/cookies-policy" element={<CookiesPolicy />} />
-          {/* Move NameEntryPage route into the main Routes block */}
-          <Route path="/name-entry" element={<NameEntryPage />} />
-        </Routes>
+      {/* Main content area */}
+      {/* Add a red border and some text to the div */}
+      <div style={{ border: '2px solid red', padding: '20px' }}>
+        <h2>Main Content Area</h2>
       </div>
       <Footer />
 
