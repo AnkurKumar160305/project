@@ -1,12 +1,9 @@
-jsx
-import React from 'react';
+import React from 'react'; // Add this line
 
-function Result() {
-  return (
-    <div>
-      Result Page
-    </div>
-  );
-}
+const Result = () => (
+  <div>
+    <h1>Result Page</h1>
+  </div>
+);
 
 export default Result;
