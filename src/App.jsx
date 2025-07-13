@@ -54,9 +54,9 @@ function App() {
       </Routes>
       <Footer />
 
-      {/* Modals rendered as overlays outside of Routes */}
-      <SignInModal isOpen={activeModal === "signin"} onClose={closeModals} />
-      <SignUpModal isOpen={activeModal === "signup"} onClose={closeModals} onSignInClick={onSignInClick} />
+      {/* Conditionally render modals based on activeModal state */}
+      {activeModal === "signin" && <SignInModal isOpen={activeModal === "signin"} onClose={closeModals} />}
+      {activeModal === "signup" && <SignUpModal isOpen={activeModal === "signup"} onClose={closeModals} onSignInClick={onSignInClick} />}
     </Router>
   );
 }
