@@ -12,6 +12,25 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html, body {
+  height: 100%;
+  margin: 0; /* Ensure no default margin is pushing content */
+  padding: 0; /* Ensure no default padding is pushing content */
+}
+
+#root {
+  height: 100%; /* Make sure the root also takes full height of its parent */
+  /* You might also want to add display: flex or similar if you plan to use flexbox/grid for main layout */
+}
+
+body {
+  /* Your existing body styles */
+  line-height: 1.6;
+  color: #333;
+  background: var(--bg-lighter, #fffdf9);
+  box-sizing: border-box; /* Consider if box-sizing is needed on body, usually applied to elements */
+  font-family: "Segoe UI", sans-serif;
+}
 
 a {
   font-weight: 500;
@@ -20,14 +39,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
