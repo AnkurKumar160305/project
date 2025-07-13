@@ -1,5 +1,5 @@
 import React from "react";
-import "./About.css";
+import "../About.css";
 import * as lucide from "lucide-react";
 
 const About = () => {

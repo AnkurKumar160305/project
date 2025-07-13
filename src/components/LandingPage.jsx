@@ -6,7 +6,7 @@ import Journey from "./Journey";
 import CTA from "./CTA";
 import Footer from "./Footer";
 import Modals from "./Modals";
-import "./LandingPage.css";
+import "../LandingPage.css";
 
 const LandingPage = () => {
   useEffect(() => {
