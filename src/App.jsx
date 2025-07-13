@@ -50,17 +50,15 @@ function App() {
         <Route path="/result" element={<Result />} /> {/* Add Result Route */}
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/cookies-policy" element={<CookiesPolicy />} />
+        {/* Move NameEntryPage route into the main Routes block */}
+        <Route path="/name-entry" element={<NameEntryPage />} />
       </Routes>
       <Footer />
 
       {/* Modals rendered as overlays outside of Routes */}
-      {activeModal === "signin" && <SignInModal isOpen={activeModal === "signin"} onClose={closeModals} />}
-      {activeModal === "signup" && <SignUpModal isOpen={activeModal === "signup"} onClose={closeModals} onSignInClick={onSignInClick} />}
-      {/* NameEntryPage is now rendered directly when activeModal is null and the route matches */}
-      {activeModal === null && <Routes><Route path="/name-entry" element={<NameEntryPage />} /></Routes>}
+      <SignInModal isOpen={activeModal === "signin"} onClose={closeModals} />
+      <SignUpModal isOpen={activeModal === "signup"} onClose={closeModals} onSignInClick={onSignInClick} />
     </Router>
   );
 }
 export default App;
-
-
