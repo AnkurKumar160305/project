@@ -38,13 +38,20 @@ function App() {
 
   return (
     <Router>
-      {/* Start with just Header and Footer */}
+      {/* Header, main content area (Routes), and Footer */}
       <Header onSignInClick={onSignInClick} onSignUpClick={onSignUpClick} />
-      {/* Keep the main content area simple for now */}
-      <div>
-        {/* We'll add Routes back later */}
-        <h2>Main Content Placeholder</h2>
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage onStartAssessmentClick={onSignInClick} />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/learn" element={<Learn />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/result" element={<Result />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/cookies-policy" element={<CookiesPolicy />} />
+        <Route path="/name-entry" element={<NameEntryPage />} />
+      </Routes>
       <Footer />
 
       {/* Modals rendered as overlays outside of Routes */}
@@ -54,4 +61,5 @@ function App() {
   );
 }
 export default App;
+
 
