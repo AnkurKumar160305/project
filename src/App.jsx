@@ -14,11 +14,6 @@ import NameEntryPage from "/src/components/NameEntryPage.jsx"; // or /pages if a
 import Result from "/src/components/Result.jsx"; // Import Result
 import Quiz from "/src/components/Quiz.jsx"; // Import Quiz
 
-// Basic Placeholder Component for Dashboard
-const Dashboard = () => (
-  <div><h1>Dashboard Page</h1></div>
-);
-
 // Basic Placeholder Components for new routes
 const PrivacyPolicy = () => (
   <div>
@@ -28,12 +23,6 @@ const PrivacyPolicy = () => (
 const CookiesPolicy = () => (
   <div>
     <h1>Cookies Policy</h1>
-  </div>
-);
-// Basic Placeholder Component for Result
-const Result = () => (
-  <div>
-    <h1>Result Page</h1>
   </div>
 );
 
@@ -50,7 +39,7 @@ function App() {
     <Router>
       <Header onSignInClick={onSignInClick} onSignUpClick={onSignUpClick} />
       <Routes>
-        <Route path="/" element={<LandingPage onStartAssessmentClick={onSignInClick} />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/dashboard" element={<Dashboard />} /> {/* Add Dashboard Route */}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
