@@ -11,6 +11,7 @@ import Learn from "/src/components/Learn.jsx";
 import SignInModal from "/src/components/SignInModal.jsx"; // Import SignInModal
 import SignUpModal from "/src/components/SignUpModal.jsx"; // Import SignUpModal
 import NameEntryPage from "/src/components/NameEntryPage.jsx"; // or /pages if applicable
+import Dashboard from "/src/components/Dashboard.jsx"; // Import Dashboard
 import Result from "/src/components/Result.jsx"; // Import Result
 import Quiz from "/src/components/Quiz.jsx"; // Import Quiz
 
@@ -38,13 +39,13 @@ function App() {
   return (
     <Router>
       <Header onSignInClick={onSignInClick} onSignUpClick={onSignUpClick} />
+      {/* Main content rendered by Routes */}
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/dashboard" element={<Dashboard />} /> {/* Add Dashboard Route */}
+        <Route path="/" element={<LandingPage onStartAssessmentClick={onSignInClick} />} /> {/* Pass modal trigger to LandingPage */}
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/learn" element={<Learn />} />
-        <Route path="/name-entry" element={<NameEntryPage />} />
         <Route path="/quiz" element={<Quiz />} /> {/* Add Quiz Route */}
         <Route path="/result" element={<Result />} /> {/* Add Result Route */}
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -52,9 +53,11 @@ function App() {
       </Routes>
       <Footer />
 
-      {/* Render modals conditionally */}
-      {activeModal === "signin" && <SignInModal onClose={closeModals} />}
-      {activeModal === "signup" && <SignUpModal onClose={closeModals} />}
+      {/* Modals rendered as overlays outside of Routes */}
+      {activeModal === "signin" && <SignInModal isOpen={activeModal === "signin"} onClose={closeModals} />}
+      {activeModal === "signup" && <SignUpModal isOpen={activeModal === "signup"} onClose={closeModals} onSignInClick={onSignInClick} />}
+      {/* NameEntryPage is now rendered directly when activeModal is null and the route matches */}
+      {activeModal === null && <Routes><Route path="/name-entry" element={<NameEntryPage />} /></Routes>}
     </Router>
   );
 }
