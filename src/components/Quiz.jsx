@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import '../Quiz.css';
 
 const questions = [
@@ -76,9 +77,10 @@ const questions = [
   },
 ];
 
-function quiz({ username }) {
+function Quiz({ username }) { // Capitalized component name
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const totalQuestions = questions.length;
   const question = questions[currentQuestion];
@@ -109,7 +111,8 @@ function quiz({ username }) {
     }
     localStorage.setItem("quizAnswers", JSON.stringify(answers));
     alert("Quiz submitted! Answers saved.");
-    
+    // Navigate to the result page after submission
+    navigate('/result');
   };
 
   return (
@@ -191,4 +194,4 @@ function quiz({ username }) {
   );
 }
 
-export default quiz;
+export default Quiz; // Capitalized component name

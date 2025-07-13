@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 import leaf from "../assets/leaf.png";
 
 const Footer = () => (
@@ -11,10 +12,10 @@ const Footer = () => (
       <div>
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Learn Ayurveda</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><Link to="/">Home</Link></li> {/* Use Link */}
+          <li><Link to="/learn">Learn Ayurveda</Link></li> {/* Use Link */}
+          <li><Link to="/about">About Us</Link></li> {/* Use Link */}
+          <li><Link to="/contact">Contact</Link></li> {/* Use Link */}
         </ul>
       </div>
       <div>
@@ -26,6 +27,9 @@ const Footer = () => (
     </div>
     <div className="footer-bottom">
       © 2025 Tridosha AI. All rights reserved.
+      {/* Privacy Policy and Cookie Policy links */}
+      <Link to="/privacy-policy">Privacy Policy</Link>
+      <Link to="/cookies-policy">Cookies Policy</Link>
     </div>
   </footer>
 );

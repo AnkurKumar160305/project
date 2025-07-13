@@ -1,6 +1,5 @@
 import React from "react";
-import "../PrivacyPolicy.css";
-
+import { Link } from "react-router-dom"; // Import Link
 const PrivacyPolicy = () => {
   return (
     <div className="container">
@@ -69,7 +68,6 @@ const PrivacyPolicy = () => {
         <p>
           We use cookies... see our <a href="/cookie-policy">Cookie Policy</a>.
         </p>
-
         <h2>Changes to This Policy</h2>
         <p>
           We may update this privacy policy... "Last updated" date will change.
@@ -84,13 +82,12 @@ const PrivacyPolicy = () => {
           </p>
         </div>
       </div>
-
-      <a href="/" className="back-link">
+      <Link to="/" className="back-link"> {/* Use Link component */}
         <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" fill="none">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
         </svg>
         Back to Home
-      </a>
+      </Link>
 
       <div className="footer">
         <p>&copy; 2025 Tridosha AI. All rights reserved.</p>

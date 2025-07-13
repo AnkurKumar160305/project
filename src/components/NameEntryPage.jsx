@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import '../NameEntryPage.css';
 import { User, MoveLeft, Sparkles } from 'lucide-react';
 
-function NameEntryPage({ onStart }) {
+function NameEntryPage() { // Remove onStart prop
   const [name, setName] = useState('');
   const isNameEntered = name.trim().length > 0;
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleBeginClick = () => {
     if (isNameEntered) {
-      onStart(name.trim()); 
+      // You can potentially pass the name to the next page using state or context if needed
+      console.log("User's name:", name.trim());
+      navigate('/quiz'); // Navigate to the quiz page
     }
   };
 
@@ -32,7 +36,7 @@ function NameEntryPage({ onStart }) {
         <div className="button-group">
           <button
             className="btn back-btn"
-            onClick={() => window.location.href = 'landing-page.html'}
+            onClick={() => navigate('/')} // Use navigate to go back to home
           >
             <MoveLeft />Back
           </button>
