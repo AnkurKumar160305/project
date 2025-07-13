@@ -42,11 +42,8 @@ const SignInModal = ({ isOpen, onClose }) => { // Accept isOpen and onClose prop
     onClose(); // Close the modal after submission
   };
 
-  // Render modal only if isOpen is true
-  if (!isOpen) return null;
-
   return (
-    <div className="modal-overlay active" onClick={onClose}>
+    <div className={`modal-overlay ${isOpen ? 'active' : ''}`} onClick={onClose}>
       <div className="signin-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
         <span className="close-btn" onClick={onClose}>×</span>
         <h2>Welcome Back</h2>
