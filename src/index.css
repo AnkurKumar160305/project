@@ -22,7 +22,6 @@
 }
 html,
 body {
- overflow-y: auto;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -33,7 +32,6 @@ body {
 }
 
 #root {
- overflow-y: auto;
   flex-grow: 1; /* Allows #root to take up available space */
   display: flex;
   flex-direction: column;
