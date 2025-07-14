@@ -78,7 +78,7 @@ body {
 /* HERO SECTION */
 .hero {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 6rem 1rem; /* Increased vertical padding */
   background: linear-gradient(to bottom, #fce8ce, #fcf4e8);
 }
 
@@ -91,7 +91,7 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.5rem; /* Adjusted margin */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: zoomRotate 3s linear infinite;
 }
@@ -108,14 +108,14 @@ body {
 }
 
 h1 {
-  font-family: system-ui, sans-serif;
-  font-size: 3rem;
+  font-family: "Segoe UI", sans-serif; /* Consistent font family */
+  font-size: 3.5rem; /* Slightly larger font size */
   color: var(--orange, #f97316);
   margin-bottom: 0.5rem;
 }
 
 .subtitle {
-  max-width: 600px;
+  max-width: 700px; /* Increased max-width */
   margin: 0 auto 1.5rem;
   font-size: 17px;
   font-family: inherit;
@@ -126,7 +126,7 @@ h1 {
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem; /* Adjusted margin */
 }
 
 /* BUTTONS */
@@ -198,14 +198,14 @@ h1 {
 .stats {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 4rem; /* Increased gap between stats */
   flex-wrap: wrap;
   padding: 1.5rem 0;
   text-align: center;
 }
 
 .stats div {
-  min-width: 120px;
+  min-width: 150px; /* Increased min-width */
 }
 
 .stats strong {
@@ -229,13 +229,13 @@ h1 {
 .doshas {
   text-align: center;
   padding: 2rem 1rem;
-  background: #fffcf7;
+  background: #fff; /* Changed background for contrast */
 }
 
 h2 {
   font-size: 40px;
 }
-
+/* Refined styling for dosha cards */
 .dosha-cards {
   display: flex;
   flex-wrap: wrap;
@@ -247,7 +247,7 @@ h2 {
 .card {
   background: white;
   padding: 0.5rem;
-  width: 380px;
+  width: 300px; /* Adjusted card width */
   border-radius: 14px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
   text-align: center;
@@ -261,7 +261,7 @@ h2 {
 
 .card .emoji {
   font-size: 2.5rem;
-  margin: 0.3rem 0 1rem;
+  margin: 0.5rem 0 1rem; /* Adjusted margin */
 }
 
 .card h3 {
@@ -270,14 +270,14 @@ h2 {
 }
 
 .card p {
-  margin: 0.2rem 0 0.9rem;
+  margin: 0.5rem 0 1rem; /* Adjusted margin */
   font-size: 1rem;
 }
 
 .card span {
   display: block;
   margin: 0.6rem 0 1.2rem;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Adjusted font size */
   line-height: 1.4;
 }
 
@@ -297,7 +297,7 @@ h2 {
 .journey {
   text-align: center;
   padding: 2rem 1rem;
-  background-color: #fffcf7;
+  background-color: #f9f9f9; /* Slightly different background */
 }
 
 .journey-steps {
