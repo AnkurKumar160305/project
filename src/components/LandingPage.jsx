@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Doshas from "./Doshas";
 import Journey from "./Journey";
 import CTA from "./CTA";
+import '../LandingPage.css';
 
 
 const LandingPage = ({ onSignInClick }) => {
