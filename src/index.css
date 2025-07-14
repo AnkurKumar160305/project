@@ -3,68 +3,38 @@
   line-height: 1.5;
   font-weight: 400;
   --bg-lighter: #fcf4e8;
+  --orange: #f97316; /* Defined orange variable for consistency */
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: #333; /* Default text color for light theme */
+  background-color: var(
+    --bg-lighter,
+    #fffdf9
+  ); /* Use lighter background by default */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 html,
-body {
-  width:100%;
-  height: 100%;
-  margin: 0; /* Ensure no default margin is pushing content */
-  padding: 0; /* Ensure no default padding is pushing content */
-}
-
-#root {
-  height: 100%; /* Make sure the root also takes full height of its parent */
-  /* You might also want to add display: flex or similar if you plan to use flexbox/grid for main layout */
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 body {
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-  color: #333;
-  background: var(--bg-lighter, #fffdf9);
-  box-sizing: border-box;
+  width: 100%;
   font-family: "Segoe UI", sans-serif;
+  flex-direction: column; /* Recommended for vertical stacking of main sections */
+  background-color: var(--bg-lighter, #fffdf9);
+  color: #333;
+}
+
+#root {
+  flex-grow: 1; /* Allows #root to take up available space */
+  display: flex;
+  flex-direction: column;
 }
 
 /* HEADER */
@@ -75,6 +45,7 @@ body {
   background-color: #ffffff;
   padding: 10px 40px;
   width: 100%;
+  flex-wrap: wrap;
   box-sizing: border-box;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
@@ -95,45 +66,32 @@ body {
   font-size: 26px;
   color: #000000;
 }
-.nav-links a {
-  display: inline-flex;
-  padding-right: 20px;
-  margin-left: 20px;
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s ease;
+.nav-links {
+  display: flex; /* Use flex for navigation links */
+  align-items: center;
+  flex-wrap: wrap; /* Allow nav links to wrap */
+  gap: 20px; /* Consistent spacing between links */
 }
-.nav-links a:hover {
-  padding: 7px 10px;
-  border-radius: 8px;
-  transition: background-color 0.3s;
-  color: white;
-  background: #ff702d;
-}
+.nav-links a,
 .nav-links button {
-  display: inline-flex;
-  padding-right: 20px;
-  margin-left: 20px;
   text-decoration: none;
   color: black;
   font-weight: 500;
   position: relative;
-  background: none;
-  border: none;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  padding: 7px 10px; /* Apply padding consistently for hover effect */
+  border-radius: 8px; /* Apply border-radius consistently for hover effect */
+  background: none; /* Ensure button background is transparent by default */
+  border: none; /* Ensure button has no border by default */
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  transition: color 0.3s ease;
 }
-
+.nav-links a:hover,
 .nav-links button:hover {
-  padding: 7px 10px;
-  border-radius: 8px;
-  transition: background-color 0.3s;
   color: white;
   background: #ff702d;
+  transform: translateY(-2px); /* Subtle lift on hover */
 }
 
 /* HERO SECTION */
@@ -141,6 +99,11 @@ body {
   text-align: center;
   padding: 3rem 1rem;
   background: linear-gradient(to bottom, #fce8ce, #fcf4e8);
+  flex-grow: 1; /* Allow hero section to expand and take available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically in hero */
+  align-items: center; /* Center content horizontally in hero */
 }
 
 .logo-ring {
@@ -171,8 +134,9 @@ body {
 h1 {
   font-family: system-ui, sans-serif;
   font-size: 3rem;
-  color: var(--orange, #f97316);
+  color: var(--orange); /* Use the defined orange variable */
   margin-bottom: 0.5rem;
+  line-height: 1.2; /* Improve readability for large headings */
 }
 
 .subtitle {
@@ -207,6 +171,7 @@ h1 {
   font-family: inherit;
   min-width: 220px;
   text-align: center;
+  text-decoration: none;
 }
 
 .btn svg {
@@ -260,6 +225,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 3rem;
+  padding: 1.5rem 1rem;
   flex-wrap: wrap;
   padding: 1.5rem 0;
   text-align: center;
@@ -267,6 +233,7 @@ h1 {
 
 .stats div {
   min-width: 120px;
+  flex-basis: auto;
 }
 
 .stats strong {
@@ -295,6 +262,8 @@ h1 {
 
 h2 {
   font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 .dosha-cards {
@@ -308,12 +277,16 @@ h2 {
 .card {
   background: white;
   padding: 0.5rem;
-  width: 380px;
+  width: 100%; /* Make cards full width on small screens */
+  max-width: 380px; /* Max width for larger screens */
   border-radius: 14px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
   text-align: center;
-  color: white;
-  transition: transform 0.3s ease;
+  color: white; /* Card content color is white due to background gradients */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; /* Use flex to control internal spacing */
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card:hover {
@@ -371,7 +344,8 @@ h2 {
 
 .step {
   background: white;
-  width: 300px;
+  width: 100%; /* Make steps full width on small screens */
+  max-width: 300px; /* Max width for larger screens */
   height: 280px;
   border-radius: 6px;
   border: 2px solid #a29b96;
@@ -422,6 +396,7 @@ h2 {
 .icon-cal {
   width: 40px;
   height: 40px;
+  margin-bottom: 1rem;
 }
 
 /* CTA */
@@ -454,6 +429,7 @@ h2 {
   justify-content: center;
   z-index: 999;
   backdrop-filter: blur(5px);
+  overflow-y: auto;
 }
 
 .modal-overlay.active {
@@ -683,24 +659,30 @@ footer {
   background-color: #2d3d2f;
   color: white;
   padding: 40px 20px;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Center text */
 }
 footer h2 {
   margin-bottom: 15px;
+  font-size: 1.8rem;
 }
-footer h3 {
-  padding-left: 190px;
-  margin-bottom: 15px;
-}
+footer h3,
 .con {
-  padding-left: 200px;
   margin-bottom: 15px;
+  padding-left: 0; /* Reset padding for mobile */
 }
 footer a {
   color: white;
   text-decoration: none;
 }
 .ficon {
-  padding-left: 175px;
+  padding-left: 0; /* Reset padding for mobile */
+  display: flex; /* Use flex for icons */
+  gap: 15px; /* Space between icons */
+  margin-top: 15px; /* Space below h3 */
+  justify-content: center; /* Center icons */
 }
 .ficon svg {
   width: 17px;

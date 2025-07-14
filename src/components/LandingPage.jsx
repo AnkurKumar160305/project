@@ -1,17 +1,13 @@
 import React, { useEffect } from "react";
+import Header from "./Header";
 import Hero from "./Hero";
 import Doshas from "./Doshas";
 import Journey from "./Journey";
-import CTA from "./CTA";
 import '../LandingPage.css';
+import * as lucide from "lucide-react";
 
 
 const LandingPage = ({ onSignInClick }) => {
-  useEffect(() => {
-    if (window.lucide) {
-      window.lucide.createIcons();
-    }
-  }, []);
  
   return (
     <>
@@ -19,7 +15,6 @@ const LandingPage = ({ onSignInClick }) => {
         <Hero />
         <Doshas />
         <Journey />
- <CTA />
       </main>
     </>
   );

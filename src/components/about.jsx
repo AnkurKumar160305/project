@@ -5,19 +5,6 @@ import * as lucide from "lucide-react";
 const About = () => {
   return (
     <>
-      <header className="site-header">
-        <div className="logo-section" id="main-content">
-          <img src="/images/leaf.png" alt="Logo" className="logo" />
-          <h1 className="site-title">Tridosha AI</h1>
-        </div>
-        <nav className="nav-links">
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-          <button>SignIn</button>
-          <button>SignUp</button>
-        </nav>
-      </header>
 
       <main>
         <h1>About Tridosha AI</h1>
