@@ -431,7 +431,6 @@ h2 {
   justify-content: center;
   z-index: 999;
   backdrop-filter: blur(5px);
-  overflow-y: auto;
 }
 
 .modal-overlay.active {
@@ -441,7 +440,7 @@ h2 {
 .signin-modal,
 .signup-modal {
   background: #fff;
-  padding: 2rem;
+  padding: 2rem 1.5rem; /* Adjusted padding */
   width: 100%;
   max-width: 400px;
   border-radius: 20px;
@@ -449,6 +448,8 @@ h2 {
   position: relative;
   z-index: 1000;
   animation: modalSlideIn 0.4s ease-out;
+  max-height: 95vh; /* Set a max height using vh unit */
+  overflow-y: auto; /* Allow internal scrolling for modal content if it exceeds max-height */
   transform: translateY(0);
 }
 
