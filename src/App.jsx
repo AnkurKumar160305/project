@@ -1,36 +1,43 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Header from "/src/components/Header.jsx"; // your navbar
+// Layout Components
+import Header from "/src/components/Header.jsx";
 import Footer from "/src/components/Footer.jsx";
 
+// Pages
 import LandingPage from "/src/components/LandingPage.jsx";
 import About from "/src/components/About.jsx";
 import Contact from "/src/components/Contact.jsx";
 import Learn from "/src/components/Learn.jsx";
-import SignInModal from "/src/components/SignInModal.jsx"; // Import SignInModal
-import SignUpModal from "/src/components/SignUpModal.jsx"; // Import SignUpModal
-import NameEntryPage from "/src/components/NameEntryPage.jsx"; // or /pages if applicable
-import Dashboard from "/src/components/Dashboard.jsx"; // Import Dashboard
-import Result from "/src/components/Result.jsx"; // Import Result
-import Quiz from "/src/components/Quiz.jsx"; // Import Quiz
+import NameEntryPage from "/src/components/NameEntryPage.jsx";
+import Dashboard from "/src/components/Dashboard.jsx";
+import Result from "/src/components/Result.jsx";
+import Quiz from "/src/components/Quiz.jsx";
 
-// Basic Placeholder Components for new routes
+// Modals
+import SignInModal from "/src/components/SignInModal.jsx";
+import SignUpModal from "/src/components/SignUpModal.jsx";
+
+// Static Page Components
 const PrivacyPolicy = () => (
-  <div>
+  <div style={{ padding: "2rem" }}>
     <h1>Privacy Policy</h1>
-  </div>
-);
-const CookiesPolicy = () => (
-  <div>
-    <h1>Cookies Policy</h1>
+    <p>This is where your privacy policy content goes.</p>
   </div>
 );
 
+const CookiesPolicy = () => (
+  <div style={{ padding: "2rem" }}>
+    <h1>Cookies Policy</h1>
+    <p>This is where your cookies policy content goes.</p>
+  </div>
+);
 
 function App() {
   const [activeModal, setActiveModal] = useState(null);
 
+  // Close both modals
   const closeModals = () => setActiveModal(null);
 
   const onSignInClick = () => setActiveModal("signin");
@@ -38,28 +45,35 @@ function App() {
 
   return (
     <Router>
-      {/* Header, main content area (Routes), and Footer */}
+      {/* Always visible Navbar */}
       <Header onSignInClick={onSignInClick} onSignUpClick={onSignUpClick} />
+
+      {/* Main Routes */}
       <Routes>
         <Route path="/" element={<LandingPage onStartAssessmentClick={onSignInClick} />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/learn" element={<Learn />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/result" element={<Result />} />
+        <Route path="/name-entry" element={<NameEntryPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/cookies-policy" element={<CookiesPolicy />} />
-        <Route path="/name-entry" element={<NameEntryPage />} />
       </Routes>
+
+      {/* Always visible Footer */}
       <Footer />
 
-      {/* Conditionally render modals based on activeModal state */}
-      {activeModal === "signin" && <SignInModal isOpen={activeModal === "signin"} onClose={closeModals} />}
-      {activeModal === "signup" && <SignUpModal isOpen={activeModal === "signup"} onClose={closeModals} onSignInClick={onSignInClick} />}
+      {/* Modals - only visible when triggered */}
+      {activeModal === "signin" && (
+        <SignInModal isOpen={true} onClose={closeModals} />
+      )}
+      {activeModal === "signup" && (
+        <SignUpModal isOpen={true} onClose={closeModals} onSignInClick={onSignInClick} />
+      )}
     </Router>
   );
 }
+
 export default App;
-
-

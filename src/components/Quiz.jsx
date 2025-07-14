@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
-import '../Quiz.css';
+import { useNavigate } from "react-router-dom";
+import "../Quiz.css";
 
 const questions = [
   {
     category: "Physical Build",
-    question: "How would you describes your body frame?",
+    question: "How would you describe your body frame?",
     options: [
       "Thin, light frame with prominent joints",
       "Medium build with good muscle tone",
@@ -77,19 +77,19 @@ const questions = [
   },
 ];
 
-function Quiz({ username }) { // Capitalized component name
+function Quiz({ username }) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const totalQuestions = questions.length;
   const question = questions[currentQuestion];
   const progressPercent = Math.round(((currentQuestion + 1) / totalQuestions) * 100);
 
   const handleOptionChange = (option) => {
-    const newAnswers = [...answers];
-    newAnswers[currentQuestion] = option;
-    setAnswers(newAnswers);
+    const updatedAnswers = [...answers];
+    updatedAnswers[currentQuestion] = option;
+    setAnswers(updatedAnswers);
   };
 
   const nextQuestion = () => {
@@ -110,48 +110,36 @@ function Quiz({ username }) { // Capitalized component name
       return;
     }
     localStorage.setItem("quizAnswers", JSON.stringify(answers));
-    alert("Quiz submitted! Answers saved.");
-    // Navigate to the result page after submission
-    navigate('/result');
+    navigate("/result");
   };
 
   return (
-    <div className="container">
-      <h1 className="title">Dosha Assessment</h1>
-      <p className="subtitle" id="username">
-        Hi {username || "Friend"}! Answer these questions to discover your unique constitution
+    <div className="quiz-container">
+      <h1 className="quiz-title">Dosha Assessment</h1>
+      <p className="quiz-subtitle">
+        Hi {username || "Friend"}! Answer these questions to discover your unique constitution.
       </p>
 
-      <div className="progress-section">
-        <span id="question-count">
-          Question {currentQuestion + 1} of {totalQuestions}
-        </span>
-        <span id="percent-complete">{progressPercent}% Complete</span>
+      <div className="quiz-progress-info">
+        <span>Question {currentQuestion + 1} of {totalQuestions}</span>
+        <span>{progressPercent}% Complete</span>
       </div>
 
-      <div className="progress-bar">
-        <div
-          className="progress-fill"
-          id="progress-fill"
-          style={{ width: `${progressPercent}%` }}
-        ></div>
+      <div className="quiz-progress-bar">
+        <div className="quiz-progress-fill" style={{ width: `${progressPercent}%` }}></div>
       </div>
 
-      <div className="card">
-        <div className="card-header">
-          <span className="dot"></span>
-          <span className="category" id="category">
-            {question.category}
-          </span>
+      <div className="quiz-card">
+        <div className="quiz-card-header">
+          <span className="quiz-category-dot"></span>
+          <span className="quiz-category">{question.category}</span>
         </div>
 
-        <h2 className="question" id="question-text">
-          {question.question}
-        </h2>
+        <h2 className="quiz-question">{question.question}</h2>
 
-        <form className="options" id="options-form" onSubmit={(e) => e.preventDefault()}>
-          {question.options.map((option, idx) => (
-            <label className="custom-radio" key={idx}>
+        <form className="quiz-options" onSubmit={(e) => e.preventDefault()}>
+          {question.options.map((option, index) => (
+            <label key={index} className="quiz-radio">
               <input
                 type="radio"
                 name="option"
@@ -159,39 +147,31 @@ function Quiz({ username }) { // Capitalized component name
                 checked={answers[currentQuestion] === option}
                 onChange={() => handleOptionChange(option)}
               />
-              <span className="radio-circle"></span>
+              <span className="quiz-radio-circle"></span>
               {option}
             </label>
           ))}
         </form>
 
-        <div className="buttons">
-          <button
-            className="btn previous"
-            onClick={prevQuestion}
-            style={{ display: currentQuestion === 0 ? "none" : "inline-block" }}
-          >
-            <span className="text">Previous</span>
-          </button>
-          <button
-            className="btn next"
-            onClick={nextQuestion}
-            style={{ display: currentQuestion === totalQuestions - 1 ? "none" : "inline-block" }}
-          >
-            <span className="text">Next</span>
-          </button>
-          <button
-            className="btn res"
-            id="get-results-btn"
-            onClick={submitQuiz}
-            style={{ display: currentQuestion === totalQuestions - 1 ? "inline-block" : "none" }}
-          >
-            <span className="text">Get Results</span>
-          </button>
+        <div className="quiz-buttons">
+          {currentQuestion > 0 && (
+            <button className="quiz-btn prev" onClick={prevQuestion}>
+              Previous
+            </button>
+          )}
+          {currentQuestion < totalQuestions - 1 ? (
+            <button className="quiz-btn next" onClick={nextQuestion}>
+              Next
+            </button>
+          ) : (
+            <button className="quiz-btn submit" onClick={submitQuiz}>
+              Get Results
+            </button>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-export default Quiz; // Capitalized component name
+export default Quiz;

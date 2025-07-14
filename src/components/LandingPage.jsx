@@ -1,22 +1,16 @@
-import React, { useEffect } from "react";
-import Header from "./Header";
+import React from "react";
 import Hero from "./Hero";
 import Doshas from "./Doshas";
 import Journey from "./Journey";
-import '../LandingPage.css';
-import * as lucide from "lucide-react";
-
+import "../LandingPage.css"; // Make sure the path is correct
 
 const LandingPage = ({ onSignInClick }) => {
- 
   return (
-    <>
-      <main id="main-content">
-        <Hero />
-        <Doshas />
-        <Journey />
-      </main>
-    </>
+    <main id="main-content" className="main-wrapper">
+      <Hero onSignInClick={onSignInClick} />
+      <Doshas />
+      <Journey />
+    </main>
   );
 };
 

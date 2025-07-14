@@ -1,30 +1,36 @@
+/* === BASE BODY STYLING === */
 body {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   background-color: #fff8f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
+/* === CONTAINER === */
 .container {
   width: 100%;
   max-width: 500px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+/* === CARD === */
 .card {
   background: white;
-  padding: 20px 30px 30px;
+  padding: 30px;
   border-radius: 16px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
+/* === ICON CIRCLE === */
 .icon-circle {
   background-color: #f97316;
   color: white;
-  font-size: 24px;
   width: 58px;
   height: 58px;
   border-radius: 50%;
@@ -33,11 +39,14 @@ body {
   justify-content: center;
   margin: 0 auto 20px;
 }
+
 .icon-circle svg {
   width: 37px;
   height: 37px;
   stroke-width: 2;
 }
+
+/* === HEADINGS === */
 .title {
   font-size: 23px;
   color: #f97316;
@@ -50,12 +59,13 @@ body {
   margin-bottom: 50px;
 }
 
+/* === LABEL AND INPUT === */
 .label {
   display: block;
   text-align: left;
   font-size: 14px;
   color: #000000;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .input {
@@ -70,24 +80,29 @@ body {
   box-sizing: border-box;
   transition: all 0.2s ease;
 }
+
 .input:focus {
   outline: none;
-  background-color: white !important;
-  color: black !important;
   box-shadow: 0 0 0 3px #fff, 0 0 0 5px #f97316;
 }
+
+/* Autofill override */
 input:-webkit-autofill {
   background-color: white !important;
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
   -webkit-text-fill-color: black !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/* === BUTTON GROUP === */
 .button-group {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 12px;
 }
 
+/* === BUTTON STYLES === */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -97,16 +112,19 @@ input:-webkit-autofill {
   border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
-  transition: all 0.3s ease;
   font-weight: 500;
   border: none;
   min-width: 213px;
   line-height: 1;
+  transition: all 0.3s ease;
 }
+
 .btn svg {
   width: 17px;
   height: 17px;
 }
+
+/* === BACK BUTTON === */
 .back-btn {
   color: black;
   background-color: #fff;
@@ -118,12 +136,18 @@ input:-webkit-autofill {
   color: white;
 }
 
+/* === BEGIN ASSESSMENT BUTTON === */
 .assess-btn {
   background: linear-gradient(to left, #fc983a, #f57c00);
   color: white;
-  opacity: 0.5;
+  opacity: 1;
 }
 
-.assess-btn:hover {
+.assess-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.assess-btn:hover:not(:disabled) {
   background-color: #fb923c;
 }

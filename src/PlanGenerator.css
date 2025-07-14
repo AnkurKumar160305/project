@@ -1,3 +1,4 @@
+/* ===== GLOBAL RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -6,170 +7,168 @@
 
 body {
   background-image: linear-gradient(to bottom right, #fffbeb);
+  font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
+/* ===== MAIN CONTAINER ===== */
 .Wellness {
   margin: 0 auto;
   display: flex;
-  align-items: center;
   flex-direction: column;
-  width: 43vw;
+  align-items: center;
+  width: 90%;
+  max-width: 720px;
+  padding: 20px;
 }
 
+/* ===== BACK BUTTON ===== */
 .arrow {
   width: 100%;
 }
 
 .arrow-btn {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  margin-top: 20px;
-  color: rgb(61, 74, 56);
-  font-weight: 700;
   gap: 13px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #3d4a38;
+  background: linear-gradient(to bottom right, #fffbeb);
   border: none;
-  background-image: linear-gradient(to bottom right, #fffbeb);
-  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 200px;
-  padding: 10px;
   border-radius: 10px;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: fit-content;
 }
+
 .arrow-btn:hover {
-  background-color: rgb(248, 121, 48);
+  background-color: #f87930;
   background-image: none;
   color: white;
 }
+
 .arrow-img {
-  height: 20px;
   width: 20px;
+  height: 20px;
 }
 
 .arrow-btn:hover .arrow-img {
   filter: invert(1);
 }
 
-.header-bot-icon svg {
-  color: white;
-}
-.header-bot-icon {
-  height: 40px;
-  width: 40px;
-  background-image: linear-gradient(#4ade80, #10b981);
-  padding: 5px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* ===== HEADER ===== */
 header {
-  width: 100%;
-  border: 1px solid hsl(214.3 31.8% 91.4%);
-  border-radius: 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fffc;
-  margin: 20px;
+  background-color: #ffffffcc;
+  border: 1px solid #d4d9e1;
+  border-radius: 12px;
   padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
 }
+
 .left {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 15px;
-  font-family: monospace;
+}
+
+.header-bot-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(#4ade80, #10b981);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-bot-icon svg {
+  color: white;
+}
+
+.left-data h1 {
+  font-size: 23px;
+  font-weight: 600;
+  color: #323e2f;
+}
+
+.left-data p {
+  font-size: 14px;
+  color: #6b7280;
 }
 
 .right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 95px;
-  background-image: linear-gradient(#4ade80, #059669);
-  border-radius: 15px;
-  padding: 7px 10px;
-  border-color: transparent;
+  background: linear-gradient(#4ade80, #059669);
+  padding: 6px 12px;
+  border-radius: 12px;
 }
+
 .right p {
   color: white;
   font-size: 14px;
   font-weight: 600;
-  font-family: monospace;
 }
 
-.left-data h1 {
-  color: rgb(50 62 47);
-  font-weight: 600;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
-  font-size: 23px;
-}
-
-.left-data p {
-  color: hsl(215.4 16.3% 46.9%);
-  font-size: 14px;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
-}
-
+/* ===== MAIN CONTENT ===== */
 main {
-  width: 43vw;
-  background-color: white;
-  border: 1px solid hsl(214.3 31.8% 91.4%);
-  border-radius: 0.75rem;
+  width: 100%;
+  background: white;
+  border: 1px solid #d4d9e1;
+  border-radius: 12px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 20px;
 }
+
 .main-heading {
   font-size: 24px;
-  color: rgb(50 62 47);
   font-weight: 600;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+  color: #323e2f;
 }
 
+/* ===== PLAN DURATION ===== */
 .plan-duration {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 10px;
 }
 
 .plan-duration-heading {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
   font-size: 15px;
-  color: rgb(61 74 56);
   font-weight: 600;
+  color: #3d4a38;
 }
 
 .plan-duration-buttons {
   display: flex;
-  align-items: center;
-  gap: 10px 12px;
-}
-.plan-duration-buttons button {
-  padding: 9px 14px;
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
-  border-radius: 10px;
-  background-color: white;
-  border: 1px solid hsl(214.3 31.8% 91.4%);
-  font-size: 15px;
-  color: rgb(0, 0, 0);
-  font-weight: 600;
-  cursor: pointer;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
+.plan-duration-buttons button,
+.day-btn {
+  padding: 9px 14px;
+  border-radius: 10px;
+  border: 1px solid #d4d9e1;
+  background-color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.day-btn.active {
+  background-color: #f87930;
+  color: white;
+}
+
+/* ===== REMINDERS ===== */
 .Reminders {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -178,95 +177,129 @@ main {
 .Reminders-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 5px;
 }
 
 .Reminders-heading {
   font-size: 15px;
-  color: rgb(61, 74, 56);
   font-weight: 600;
+  color: #3d4a38;
 }
 
 .Reminders-text {
-  color: rgb(61, 74, 56);
   font-size: 13px;
+  color: #3d4a38;
 }
 
 .onoff {
   width: 48px;
   height: 25px;
-  border: none;
+  background-color: #e2e8f0;
   border-radius: 15px;
-  padding: 2px;
-  background-color: hsl(214.3 31.8% 91.4%);
-  display: flex;
-  align-items: center;
   position: relative;
+  padding: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
 .onoff button {
   width: 21px;
   height: 21px;
   border: none;
-  border-radius: 15px;
-  background-color: hsl(0 0% 100%);
+  border-radius: 50%;
+  background-color: white;
   position: absolute;
-  transition: left 1s ease-in;
+  left: 2px;
+  transition: left 0.3s ease;
+}
+
+.onoff.active {
+  background-color: #f87930;
 }
 
 .onoff.active button {
   left: 25px;
 }
 
+/* ===== DESCRIPTION TEXTAREA ===== */
 .description {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 10px;
 }
 
-.description p {
+.description-heading {
   font-size: 15px;
-  color: rgb(61, 74, 56);
   font-weight: 600;
+  color: #3d4a38;
 }
 
-#PlanGenerator::placeholder {
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
-}
-
-#PlanGenerator {
+textarea {
+  width: 100%;
   padding: 10px;
-  overflow: auto;
-  border-radius: 0.75rem;
-  border: 1px solid rgb(196 209 196);
+  border-radius: 12px;
+  border: 1px solid #c4d1c4;
+  resize: vertical;
+  font-size: 14px;
+  transition: border 0.2s;
 }
 
+textarea.active-textarea {
+  border: 1px solid orange;
+}
+
+/* ===== BUTTON: GENERATE PLAN ===== */
 .get-solution {
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: white;
-  border: none;
-  border-radius: 10px;
+  justify-content: center;
+  gap: 12px;
   padding: 12px;
-  gap: 15px;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
   font-size: 14px;
   font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  color: white;
   background-image: linear-gradient(135deg, #f97316, #ea580c, #c2410c);
   cursor: pointer;
-  transition: all 0.15s ease-in;
+  transition: all 0.2s ease;
 }
 
 .get-solution svg {
-  height: 17px;
   width: 17px;
+  height: 17px;
 }
 
 .get-solution:hover {
-  box-shadow: 0px 3px 8px 2px rgb(214, 213, 213);
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media screen and (max-width: 768px) {
+  .Wellness,
+  main,
+  header {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .arrow-btn {
+    font-size: 14px;
+  }
+
+  .left-data h1 {
+    font-size: 20px;
+  }
+
+  .main-heading {
+    font-size: 20px;
+  }
+
+  .plan-duration-buttons {
+    flex-direction: column;
+  }
+
+  .get-solution {
+    font-size: 13px;
+  }
 }

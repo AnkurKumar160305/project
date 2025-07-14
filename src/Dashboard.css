@@ -1,3 +1,4 @@
+/* === CONTAINER === */
 .dashboard-container {
   min-height: 100vh;
   padding: 24px;
@@ -5,10 +6,14 @@
   font-family: sans-serif;
 }
 
+/* === HEADER === */
 .dashboard-header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 32px;
+  gap: 1rem;
 }
 
 .header-left {
@@ -23,19 +28,40 @@
   padding: 8px;
   border-radius: 50%;
   font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-title {
   font-size: 24px;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* === NAVIGATION === */
+.header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .header-nav button {
   background: none;
   border: none;
   color: #555;
-  margin-left: 12px;
+  padding: 8px 12px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.header-nav button:hover {
+  color: #111;
 }
 
 .header-nav .active {
@@ -43,6 +69,7 @@
   font-weight: bold;
 }
 
+/* === WELCOME CARD === */
 .welcome-card {
   background: linear-gradient(to right, #fb923c, #f97316);
   color: white;
@@ -61,6 +88,7 @@
   margin-top: 12px;
 }
 
+/* === DASHBOARD GRID === */
 .dashboard-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -80,6 +108,7 @@
   margin-bottom: 16px;
 }
 
+/* === BUTTONS === */
 .quick-actions button {
   display: block;
   width: 100%;
@@ -89,8 +118,15 @@
   border-radius: 8px;
   background: #f9f9f9;
   cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
 }
 
+.quick-actions button:hover {
+  background: #f3f3f3;
+}
+
+/* === TODAY'S FOCUS ITEMS === */
 .focus-item {
   display: flex;
   align-items: center;
@@ -107,9 +143,11 @@
 .dot.blue {
   background: #3b82f6;
 }
+
 .dot.orange {
   background: #f97316;
 }
+
 .dot.green {
   background: #22c55e;
 }
@@ -122,4 +160,28 @@
 .focus-item span {
   font-size: 12px;
   color: #888;
+}
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-nav {
+    justify-content: flex-start;
+  }
+
+  .app-title {
+    font-size: 20px;
+  }
+
+  .quick-actions button {
+    font-size: 0.95rem;
+  }
 }

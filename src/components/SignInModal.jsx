@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import { useNavigate } from "react-router-dom";
 
-const SignInModal = ({ isOpen, onClose }) => { // Accept isOpen and onClose props
+const SignInModal = ({ isOpen, onClose }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const modalRef = useRef(null);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  // Effect to close modal on Escape key press
+  // Close modal on Escape key
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === "Escape") onClose();
@@ -16,54 +16,74 @@ const SignInModal = ({ isOpen, onClose }) => { // Accept isOpen and onClose prop
     return () => document.removeEventListener("keydown", handleEscape);
   }, [onClose]);
 
-  // Effect to handle body scroll when modal is open
+  // Lock body scroll when modal is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = "auto"; // Clean up on unmount
+      document.body.style.overflow = "auto";
     };
   }, [isOpen]);
 
   const togglePassword = () => setPasswordVisible((prev) => !prev);
 
-  const handleInputChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSignInSubmit = (e) => {
     e.preventDefault();
-    // Add your sign-in authentication logic here
     console.log("Sign In submitted:", formData);
-    // Upon successful sign-in, navigate to the name entry page
-    navigate("/name-entry");
-    onClose(); // Close the modal after submission
+    navigate("/name-entry"); // Redirect after login
+    onClose(); // Close modal
   };
 
+  if (!isOpen) return null;
+
   return (
-    <div className={`modal-overlay ${isOpen ? 'active' : ''}`} onClick={onClose}>
-      <div className="signin-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
-        <span className="close-btn" onClick={onClose}>×</span>
+    <div
+      className="modal-overlay active"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose(); // Close only when clicking outside modal
+      }}
+    >
+      <div className="signin-modal" ref={modalRef}>
+        <button className="close-btn" onClick={onClose} aria-label="Close modal">
+          ×
+        </button>
         <h2>Welcome Back</h2>
         <form onSubmit={handleSignInSubmit}>
+          {/* Email Input */}
           <div className="input-with-icon">
-            <input type="email" placeholder="Email" name="email" required onChange={handleInputChange} />
-            <i className="input-icon" data-lucide="mail"></i>
-          </div>
-          <div className="password-container">
             <input
-              type={passwordVisible ? "text" : "password"}
-              placeholder="Password"
-              name="password"
+              type="email"
+              name="email"
+              placeholder="Email"
               required
               onChange={handleInputChange}
             />
-            <button type="button" className="toggle-password" onClick={togglePassword}>
+            <i className="input-icon" data-lucide="mail"></i>
+          </div>
+
+          {/* Password Input */}
+          <div className="password-container">
+            <input
+              type={passwordVisible ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              required
+              onChange={handleInputChange}
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={togglePassword}
+              aria-label="Toggle password visibility"
+            >
               <i data-lucide={passwordVisible ? "eye-off" : "eye"}></i>
             </button>
           </div>
+
           <button type="submit">Sign In</button>
         </form>
       </div>

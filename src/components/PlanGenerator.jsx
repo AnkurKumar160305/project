@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../PlanGenerator.css";
+import arrowImg from "/images/down-arrow.png";
 
 const PlanGenerator = () => {
   const [selectedDuration, setSelectedDuration] = useState(null);
   const [text, setText] = useState("");
   const [reminderActive, setReminderActive] = useState(false);
+  const navigate = useNavigate();
 
   const handleDurationClick = (duration) => {
     setSelectedDuration(duration);
@@ -20,17 +23,16 @@ const PlanGenerator = () => {
 
   return (
     <div className="Wellness">
+      {/* Go Back */}
       <div className="arrow">
-        <button
-          className="arrow-btn"
-          onClick={() => (window.location.href = "dashboard.html")}
-        >
-          <img className="arrow-img" src="./images/down-arrow.png" alt="" />
+        <button className="arrow-btn" onClick={() => navigate("/dashboard")}>
+          <img className="arrow-img" src={arrowImg} alt="Back arrow" />
           Back to Dashboard
         </button>
       </div>
 
-      <header>
+      {/* Header Section */}
+      <header className="header">
         <div className="left">
           <div className="header-bot-icon">
             <svg
@@ -42,7 +44,6 @@ const PlanGenerator = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="lucide lucide-calendar h-6 w-6 text-white"
             >
               <path d="M8 2v4" />
               <path d="M16 2v4" />
@@ -62,22 +63,19 @@ const PlanGenerator = () => {
         </div>
       </header>
 
+      {/* Main Content */}
       <main>
         <p className="main-heading">Customize Your Plan</p>
 
+        {/* Plan Duration */}
         <div className="plan-duration">
           <p className="plan-duration-heading">Plan Duration</p>
           <div className="plan-duration-buttons">
             {[7, 14, 30].map((duration) => (
               <button
                 key={duration}
-                className={`day-${duration}`}
+                className={`day-btn ${selectedDuration === duration ? "active" : ""}`}
                 onClick={() => handleDurationClick(duration)}
-                style={{
-                  backgroundColor:
-                    selectedDuration === duration ? "rgb(248, 121, 48)" : "",
-                  color: selectedDuration === duration ? "white" : "",
-                }}
               >
                 {duration} Days
               </button>
@@ -85,6 +83,7 @@ const PlanGenerator = () => {
           </div>
         </div>
 
+        {/* Reminder Toggle */}
         <div className="Reminders">
           <div className="Reminders-content">
             <p className="Reminders-heading">Daily Reminders</p>
@@ -93,16 +92,12 @@ const PlanGenerator = () => {
           <div
             className={`onoff ${reminderActive ? "active" : ""}`}
             onClick={handleToggleReminder}
-            style={{
-              backgroundColor: reminderActive
-                ? "rgb(248, 121, 48)"
-                : "hsl(214.3 31.8% 91.4%)",
-            }}
           >
-            <button></button>
+            <button aria-label="Toggle reminder"></button>
           </div>
         </div>
 
+        {/* Optional Description */}
         <div className="description">
           <p className="description-heading">
             Additional Goals or Focus Areas (Optional)
@@ -112,15 +107,11 @@ const PlanGenerator = () => {
             placeholder="e.g., improve sleep quality, boost energy, manage weight, reduce stress..."
             value={text}
             onChange={handleTextChange}
-            style={{
-              border:
-                text.trim() !== ""
-                  ? "1px solid orange"
-                  : "1px solid rgb(196 209 196)",
-            }}
+            className={text.trim() !== "" ? "active-textarea" : ""}
           ></textarea>
         </div>
 
+        {/* Submit Button */}
         <button className="get-solution">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -131,14 +122,14 @@ const PlanGenerator = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="lucide lucide-calendar mr-2 h-5 w-5"
+            className="solution-icon"
           >
             <path d="M8 2v4" />
             <path d="M16 2v4" />
             <rect width="18" height="18" x="3" y="4" rx="2" />
             <path d="M3 10h18" />
           </svg>
-          Generate 7-Day Plan
+          Generate {selectedDuration || "7"}-Day Plan
         </button>
       </main>
     </div>
