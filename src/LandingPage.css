@@ -17,9 +17,8 @@ body {
 }
 
 .main-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
+  margin: 0;
+  padding: 0;
   width: 100%;
 }
 
@@ -79,6 +78,9 @@ body {
 
 /* HERO */
 .hero {
+  margin: 0 !important;
+  max-width: none !important;
+  width: 100vw;
   text-align: center;
   padding: 5rem 1rem;
   background: linear-gradient(to bottom, #fce8ce, #fcf4e8);
