@@ -82,7 +82,7 @@ body {
   max-width: none !important;
   width: 100vw;
   text-align: center;
-  padding: 5rem 1rem;
+  padding: 1rem 1rem;
   background: linear-gradient(to bottom, #fce8ce, #fcf4e8);
 }
 
@@ -113,7 +113,7 @@ h1 {
 .subtitle {
   max-width: 700px;
   margin: 0 auto;
-  font-size: 1.1rem;
+  font-size: 17px !important;
 }
 
 .hero-buttons {
@@ -121,7 +121,7 @@ h1 {
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem !important;
 }
 
 /* BUTTONS */
@@ -173,6 +173,9 @@ h1 {
 .stats div {
   min-width: 140px;
   text-align: center;
+}
+.highlight {
+  color: #e84b28;
 }
 
 /* DOSHAS */
