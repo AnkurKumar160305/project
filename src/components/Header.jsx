@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import leaf from "../assets/leaf.png";
+import {Leaf} from "lucide-react";
 import '../Header.css';
 
 const Header = ({ onSignInClick, onSignUpClick }) => {
   return (
     <header className="site-header">
       <div className="logo-section">
-        <img src={leaf} alt="Logo" className="logo" />
+        <div className="logo">
+          <Leaf color="#f97316" size={50} strokeWidth={2.5}  />
+        </div>
         <h1 className="site-title">Tridosha AI</h1>
       </div>
       <nav className="nav-links">
